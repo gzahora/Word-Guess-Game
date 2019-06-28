@@ -10,3 +10,75 @@
     4c) else tell the player they were wrong and decrease the number of guesses left
 */
 
+//-----------------------------------------------------
+
+//Word array
+var wordList = [
+    "solar",
+    "wind",
+    "hydropower",
+    "nuclear",
+    "geothermal",
+    "biomass",
+];
+
+var wrongGuess = [];
+
+const maxGuesses = 10;
+var wins = 0;
+var losses = 0;
+
+var userGuessText = document.getElementById("userGuess-text");
+var randomWordText = document.getElementById("randomWord-text");
+var wrongGuessText = document.getElementById("wrongGuess-text");
+var guessesLeftText = document.getElementById("guessesLeft-text");
+var winsText = document.getElementById("wins-text");
+var lossesText = document.getElementById("losses-text");
+
+
+
+//computer picks a word from the array
+var randomWord = wordList[Math.floor(Math.random() * wordList.length)];
+console.log(randomWord)
+
+//create initial array of blank spaces for answers and a loop to continue until letters are guessed
+var dash = [];
+
+for (var i = 0; i < randomWord.length; i++) {
+    dash[i] = "_";
+
+};
+
+console.log(dash);
+
+document.onkeyup = function (event) {
+    var userGuess = event.key;
+    console.log(userGuess);
+
+    for (var j = 0; j < randomWord.length; j++) {
+        if (userGuess === randomWord[j]) {
+            //replace "_" with letter
+            // if no dashes left, increase win counter and display winner message the answer ___, then reset game
+
+            //google "how to check if a letter exists in a word"
+        }
+    }
+
+    //does dash array include userGuess
+
+    // if it doesn't, increase wrong guess counter && display wrong guess in wrongGuess array
+    //check if wrongGuess.length === maxGuesses
+    //if wrongGuess.length === maxGuesses then increase lose counter && display loser message && reset game
+
+    // Display variables
+    userGuessText.textContent = dash.join(" ");
+    wrongGuessText.textContent = "Wrong Guess" + wrongGuess;
+    /*guessesLeftText.textContent = "Guesses Left" + guessesLeft;
+    winsText.textContent = "wins: " + wins;
+    lossesText.textContent = "losses: " + losses;*/
+
+};
+
+
+
+
