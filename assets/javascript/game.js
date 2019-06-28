@@ -23,6 +23,7 @@ var wordList = [
 ];
 
 var wrongGuess = [];
+var userGuess = [];
 
 const maxGuesses = 10;
 var wins = 0;
@@ -49,20 +50,26 @@ for (var i = 0; i < randomWord.length; i++) {
 
 };
 
-console.log(dash);
-
 document.onkeyup = function (event) {
     var userGuess = event.key;
     console.log(userGuess);
 
     for (var j = 0; j < randomWord.length; j++) {
-        if (userGuess === randomWord[j]) {
-            //replace "_" with letter
-            // if no dashes left, increase win counter and display winner message the answer ___, then reset game
+        if (dash[j] === "_") {
+            if (randomWord[j] === userGuess) {
+                dash[j] = userGuess;     //replace "_" with letter
+                // if no dashes left, increase win counter and display winner message the answer ___, then reset game
 
-            //google "how to check if a letter exists in a word"
+                //google "how to check if a letter exists in a word"
+            }
+            
+            }
+            else {wrongGuess.push(userGuess);
+               
         }
+
     }
+    console.log(dash);
 
     //does dash array include userGuess
 
@@ -72,7 +79,7 @@ document.onkeyup = function (event) {
 
     // Display variables
     userGuessText.textContent = dash.join(" ");
-    wrongGuessText.textContent = "Wrong Guess" + wrongGuess;
+    wrongGuessText.textContent = "Wrong Guess: " + wrongGuess;
     /*guessesLeftText.textContent = "Guesses Left" + guessesLeft;
     winsText.textContent = "wins: " + wins;
     lossesText.textContent = "losses: " + losses;*/
