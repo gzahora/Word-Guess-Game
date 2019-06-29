@@ -27,6 +27,8 @@ var wordList = [
 
 var wrongGuess = [];
 var userGuess = [];
+var dash = [];
+var randomWord;
 
 const maxGuesses = 10;
 var wins = 0;
@@ -47,7 +49,7 @@ var randomWord = wordList[Math.floor(Math.random() * wordList.length)];
 console.log(randomWord)
 
 //create initial array of blank spaces for answers and a loop to continue until letters are guessed
-var dash = [];
+
 
 for (var i = 0; i < randomWord.length; i++) {
     dash[i] = "_";
@@ -62,6 +64,11 @@ function reset() {
     userGuessText.textContent = "";
     wrongGuessText.textContent = "";
     guessesLeftText.textContent = "Number of Guesses Left: ";
+    var randomWord = wordList[Math.floor(Math.random() * wordList.length)];
+    console.log(randomWord);
+    for (var i = 0; i < randomWord.length; i++) {
+        dash[i] = "_";
+    }
 }
 
 document.onkeyup = function (event) {
