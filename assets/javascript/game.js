@@ -22,7 +22,7 @@ var wordList = [
     "biomass",
     "geoengineering",
     "renewable",
-    
+
 ];
 
 var wrongGuess = [];
@@ -31,6 +31,7 @@ var userGuess = [];
 const maxGuesses = 10;
 var wins = 0;
 var losses = 0;
+var guessesLeft = 10;
 
 var userGuessText = document.getElementById("userGuess-text");
 var randomWordText = document.getElementById("randomWord-text");
@@ -53,6 +54,33 @@ for (var i = 0; i < randomWord.length; i++) {
 
 };
 
+//-----------------------------------------------------------------------------------------------------------
+
+// Checks for a win by seeing if there are any remaining underscores in the guessingword we are building.
+function checkWin() {
+    if(guessingWord.indexOf("_") === -1) {
+        document.getElementById("youwin-image").style.cssText = "display: block";
+        document.getElementById("pressKeyTryAgain").style.cssText= "display: block";
+        wins++;
+        winSound.play();
+        hasFinished = true;
+    }
+};
+
+
+// Checks for a loss
+function checkLoss()
+{
+    if(remainingGuesses <= 0) {
+        loseSound.play();
+        document.getElementById("gameover-image").style.cssText = "display: block";
+        document.getElementById("pressKeyTryAgain").style.cssText = "display:block";
+        hasFinished = true;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------
+
 document.onkeyup = function (event) {
     var userGuess = event.key;
     console.log(userGuess);
@@ -63,12 +91,12 @@ document.onkeyup = function (event) {
                 dash[j] = userGuess;     //replace "_" with letter
                 // if no dashes left, increase win counter and display winner message the answer ___, then reset game
 
-                //google "how to check if a letter exists in a word"
+
             }
 
         }
         else {
-            wrongGuess = userGuess;
+            wrongGuess += " " + userGuess;
 
 
         }
@@ -85,9 +113,9 @@ document.onkeyup = function (event) {
     // Display variables
     userGuessText.textContent = dash.join(" ");
     wrongGuessText.textContent = wrongGuess;
-    /*guessesLeftText.textContent = "Guesses Left" + guessesLeft;
-    winsText.textContent = "wins: " + wins;
-    lossesText.textContent = "losses: " + losses;*/
+    guessesLeftText.textContent = "Number of Guesses Left: " + guessesLeft;
+    winsText.textContent = "Wins: " + wins;
+    lossesText.textContent = "Losses: " + losses
 
 };
 
