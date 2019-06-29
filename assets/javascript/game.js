@@ -88,13 +88,13 @@ document.onkeyup = function (event) {
     for (var j = 0; j < randomWord.length; j++) {
         if (dash[j] === "_") {
             if (randomWord[j] === userGuess) {
-                dash[j] === userGuess;     //replace "_" with letter
-                letterFound === true; // if no dashes left, increase win counter and display winner message the answer ___, then reset game
+                dash[j] = userGuess;     //replace "_" with letter
+                letterFound = true; // if no dashes left, increase win counter and display winner message the answer ___, then reset game
             }
         }
     }
     if (letterFound === false) {
-        wrongGuess.push(userGuess);
+        wrongGuess.push(" " + userGuess);
     }
 
     //does dash array include userGuess
