@@ -22,7 +22,6 @@ var wordList = [
     "biomass",
     "geoengineering",
     "renewable",
-
 ];
 
 var wrongGuess = [];
