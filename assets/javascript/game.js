@@ -54,39 +54,23 @@ for (var i = 0; i < randomWord.length; i++) {
 
 };
 
-//-----------------------------------------------------------------------------------------------------------
-
-// Checks for a win by seeing if there are any remaining underscores in the guessingword we are building.
-function checkWin() {
-    if(guessingWord.indexOf("_") === -1) {
-        document.getElementById("youwin-image").style.cssText = "display: block";
-        document.getElementById("pressKeyTryAgain").style.cssText= "display: block";
-        wins++;
-        winSound.play();
-        hasFinished = true;
-    }
-};
-
-
-// Checks for a loss
-function checkLoss()
-{
-    if(remainingGuesses <= 0) {
-        loseSound.play();
-        document.getElementById("gameover-image").style.cssText = "display: block";
-        document.getElementById("pressKeyTryAgain").style.cssText = "display:block";
-        hasFinished = true;
-    }
+function reset() {
+    wrongGuess = [];
+    userGuess = [];
+    guessesLeft = 10;
+    dash = [];
+    userGuessText.textContent = "";
+    wrongGuessText.textContent = "";
+    guessesLeftText.textContent = "Number of Guesses Left: ";
 }
-
-//----------------------------------------------------------------------------------------------------------------
 
 document.onkeyup = function (event) {
     var userGuess = event.key;
     var letterFound = false;
-
+    
     if (wrongGuess.includes(userGuess)) {
         alert("You already guessed this letter");
+        console.log("Sup browsk");
         return;
     }
 
@@ -99,15 +83,17 @@ document.onkeyup = function (event) {
         }
     }
     if (letterFound === false) {
-        wrongGuess.push(" " + userGuess);
+        wrongGuess.push(userGuess);
         guessesLeft -= 1;
             if (guessesLeft < 0) {
-                Losses++;
+                losses++;
+                reset();
             }
     }
 
     if (!dash.includes("_")) {
         wins++;
+        reset();
     }
 
 
@@ -120,7 +106,7 @@ document.onkeyup = function (event) {
 
     // Display variables
     userGuessText.textContent = dash.join(" ");
-    wrongGuessText.textContent = wrongGuess;
+    wrongGuessText.textContent = wrongGuess.join(", ");
     guessesLeftText.textContent = "Number of Guesses Left: " + guessesLeft;
     winsText.textContent = "Wins: " + wins;
     lossesText.textContent = "Losses: " + losses
