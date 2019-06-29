@@ -1,0 +1,17 @@
+body {
+    background: url(../../assets/images/zion-natl-park.jpg);
+    background-size: cover;
+}
+
+#park1 {
+    background: rgb(230, 255, 230, .6);
+}
+
+#park2 {
+    background: rgb(230, 255, 230, .8);
+}
+
+
+#park3 {
+    background: rgb(230, 255, 230, .6);
+}

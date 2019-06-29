@@ -14,20 +14,36 @@
 
 //Word array
 var wordList = [
-    "solar",
-    "wind",
-    "hydropower",
-    "nuclear",
-    "geothermal",
-    "biomass",
-    "geoengineering",
-    "renewable",
+    "acadia",
+    "arches",
+    "badlands",
+    "biscayne",
+    "bryce",
+    "canyonlands",
+    "congaree",
+    "denali",
+    "everglades",
+    "glacier",
+    "katmai",
+    "olympic",
+    "pinnacles",
+    "redwood",
+    "saguaro",
+    "sequoia",
+    "shenandoah",
+    "yellowstone",
+    "yosemite",
+    "zion",
+    "banff",
+    "jasper",
 ];
 
+//Global variables
 var wrongGuess = [];
 var userGuess = [];
 var dash = [];
 var randomWord;
+var chosenWords = [];
 
 const maxGuesses = 10;
 var wins = 0;
@@ -45,16 +61,14 @@ var lossesText = document.getElementById("losses-text");
 
 //computer picks a word from the array
 randomWord = wordList[Math.floor(Math.random() * wordList.length)];
-console.log(randomWord)
+console.log(randomWord);
 
 //create initial array of blank spaces for answers and a loop to continue until letters are guessed
-
-
 for (var i = 0; i < randomWord.length; i++) {
     dash[i] = "_";
-
 };
 
+//function to reset the game after a win or loss
 function reset() {
     wrongGuess = [];
     userGuess = [];
@@ -68,12 +82,21 @@ function reset() {
     for (var i = 0; i < randomWord.length; i++) {
         dash[i] = "_";
     }
-}
+};
 
+// funtion to update display
+
+
+
+// function to make a letter guess = player's keyboard input
 document.onkeyup = function (event) {
     var userGuess = event.key;
     var letterFound = false;
-    
+
+
+
+
+    // this prevents the player from guessing the same letter twice and alerts the player to try a different letter    
     if (wrongGuess.includes(userGuess)) {
         alert("You already guessed this letter");
         return;
@@ -82,28 +105,35 @@ document.onkeyup = function (event) {
     for (var j = 0; j < randomWord.length; j++) {
         if (dash[j] === "_") {
             if (randomWord[j] === userGuess) {
-                dash[j] = userGuess;     //replace "_" with letter
-                letterFound = true; // if no dashes left, increase win counter and display winner message the answer ___, then reset game
+                dash[j] = userGuess;
+                letterFound = true;
             }
         }
     }
+
+    // this ends and then restarts the game after a loss
     if (letterFound === false) {
         wrongGuess.push(userGuess);
         guessesLeft -= 1;
-            if (guessesLeft < 0) {
-                losses++;
-                reset();
-            }
+        if (guessesLeft < 0) {
+            losses++;
+            alert("You LOSE! The Word Was: " + randomWord + ". Try Again.");
+            reset();
+
+        }
     }
 
+    // this ends and then restarts the game after a win
     if (!dash.includes("_")) {
         wins++;
+        alert("You Win! The Word Was: " + randomWord + ". Try Again.");
         reset();
+
     }
 
     // Display variables
     userGuessText.textContent = dash.join(" ");
-    wrongGuessText.textContent = wrongGuess.join(", ");
+    wrongGuessText.textContent = wrongGuess.join(" ");
     guessesLeftText.textContent = "Number of Guesses Left: " + guessesLeft;
     winsText.textContent = "Wins: " + wins;
     lossesText.textContent = "Losses: " + losses

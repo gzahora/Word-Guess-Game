@@ -15,57 +15,63 @@
 
     <div class="container">
 
-        <div class="jumbotron">
-            <h1 class="display-4 text-center">Guess the Renewable Energy Terms!</h1>
+        <div class="jumbotron p-2 m-2">
+            <h1 class="display-4 text-center">Guess the National Park!</h1>
             <br>
             <h3 class="text-center">This is a word-guess game.</h3>
             <br>
             <h5 class="text-center">Type one letter at a time and see if you can guess the word!</h5>
-            <h3 class="text-center">Press the Space Bar to begin!</h3>
+            <h3 class="text-center">Press any key to begin!</h3>
         </div>
     </div>
 
     <br><br>
 
     <div class="container">
+        <div class="row align-items-center" style="height: 400px">
+            <div class="col-4 py-5 text-black" id="park1">
+                <h5 id="wins-text"></h5>
+                <br>
+                <h5 id="losses-text"></h5>
+                <br>
+                <h5 id="guessesLeft-text"></h5>
+            </div>
+            <div class="col-1"></div>
+
+            <div class="col-7">
+
+
+                <div class="row">
+
+                    <div class="col-12" style="height: 200px" id="park2">
+                        <p id="userGuess-text" class="h1 py-5 text-center text-black"></p>
+                    </div>
+
+
+                </div>
+                <div class="row" style="height: 10px">
+
+                </div>
+
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8" style="height: 180px" id="park3">
+                        <h4 class="text-center text-black align-middle p-3">Wrong Guesses:</h4>
+                        <p id="wrongGuess-text" class="h5 text-center text-black"></p>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+
+
+
+        </div>
         <div class="row">
-            <div class="col-3">
-                    <h5 id="wins-text"></h5>
-                    <br>
-                    <h5 id="losses-text"></h5>
-                    <br>
-            </div>
-
-            <div class="col-6">
-
-                <h1>
-                    <p id="userGuess-text" class="text-center"></p>
-                </h1>
-            </div>
-
-            <div class="col-3">
-                    <h5 id="guessesLeft-text"></h5>
-                    <br>
-            </div>
-
+            <br>
         </div>
 
-        <div class="row" style="height: 200px">
-            <div class="col-3"></div>
-            
-            <div class="col-6" style="color: black; border-width: 5px; border-style: solid; background-color: #4aaaa5">
-                    <h4 class="text-center text-white" >Wrong Guesses:</h4>
-                    <br><br>
-                    <p id="wrongGuess-text" class="h5 text-center text-white"></p>
-            
-            </div>
-            
-            <div class="col-3"></div>
-        </div>
 
-        
 
-       
 
     </div>
 
