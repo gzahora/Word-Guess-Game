@@ -20,6 +20,9 @@ var wordList = [
     "nuclear",
     "geothermal",
     "biomass",
+    "geoengineering",
+    "renewable",
+    
 ];
 
 var wrongGuess = [];
@@ -62,14 +65,16 @@ document.onkeyup = function (event) {
 
                 //google "how to check if a letter exists in a word"
             }
-            
-            }
-            else {wrongGuess.push(userGuess);
-               
+
+        }
+        else {
+            wrongGuess = userGuess;
+
+
         }
 
     }
-    console.log(dash);
+
 
     //does dash array include userGuess
 
@@ -79,7 +84,7 @@ document.onkeyup = function (event) {
 
     // Display variables
     userGuessText.textContent = dash.join(" ");
-    wrongGuessText.textContent = "Wrong Guess: " + wrongGuess;
+    wrongGuessText.textContent = wrongGuess;
     /*guessesLeftText.textContent = "Guesses Left" + guessesLeft;
     winsText.textContent = "wins: " + wins;
     lossesText.textContent = "losses: " + losses;*/
