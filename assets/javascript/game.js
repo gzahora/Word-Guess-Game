@@ -83,8 +83,13 @@ function checkLoss()
 
 document.onkeyup = function (event) {
     var userGuess = event.key;
-    console.log(userGuess);
     var letterFound = false;
+
+    if (wrongGuess.includes(userGuess)) {
+        alert("You already guessed this letter");
+        return;
+    }
+
     for (var j = 0; j < randomWord.length; j++) {
         if (dash[j] === "_") {
             if (randomWord[j] === userGuess) {
@@ -95,7 +100,17 @@ document.onkeyup = function (event) {
     }
     if (letterFound === false) {
         wrongGuess.push(" " + userGuess);
+        guessesLeft -= 1;
+            if (guessesLeft < 0) {
+                Losses++;
+            }
     }
+
+    if (!dash.includes("_")) {
+        wins++;
+    }
+
+
 
     //does dash array include userGuess
 
