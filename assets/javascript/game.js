@@ -84,25 +84,18 @@ function checkLoss()
 document.onkeyup = function (event) {
     var userGuess = event.key;
     console.log(userGuess);
-
+    var letterFound = false;
     for (var j = 0; j < randomWord.length; j++) {
         if (dash[j] === "_") {
             if (randomWord[j] === userGuess) {
-                dash[j] = userGuess;     //replace "_" with letter
-                // if no dashes left, increase win counter and display winner message the answer ___, then reset game
-
-
+                dash[j] === userGuess;     //replace "_" with letter
+                letterFound === true; // if no dashes left, increase win counter and display winner message the answer ___, then reset game
             }
-
         }
-        else {
-            wrongGuess += " " + userGuess;
-
-
-        }
-
     }
-
+    if (letterFound === false) {
+        wrongGuess.push(userGuess);
+    }
 
     //does dash array include userGuess
 
