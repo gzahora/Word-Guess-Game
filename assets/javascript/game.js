@@ -44,7 +44,7 @@ var lossesText = document.getElementById("losses-text");
 
 
 //computer picks a word from the array
-var randomWord = wordList[Math.floor(Math.random() * wordList.length)];
+randomWord = wordList[Math.floor(Math.random() * wordList.length)];
 console.log(randomWord)
 
 //create initial array of blank spaces for answers and a loop to continue until letters are guessed
@@ -63,7 +63,7 @@ function reset() {
     userGuessText.textContent = "";
     wrongGuessText.textContent = "";
     guessesLeftText.textContent = "Number of Guesses Left: ";
-    var randomWord = wordList[Math.floor(Math.random() * wordList.length)];
+    randomWord = wordList[Math.floor(Math.random() * wordList.length)];
     console.log(randomWord);
     for (var i = 0; i < randomWord.length; i++) {
         dash[i] = "_";
@@ -76,7 +76,6 @@ document.onkeyup = function (event) {
     
     if (wrongGuess.includes(userGuess)) {
         alert("You already guessed this letter");
-        console.log("Sup browsk");
         return;
     }
 
@@ -101,14 +100,6 @@ document.onkeyup = function (event) {
         wins++;
         reset();
     }
-
-
-
-    //does dash array include userGuess
-
-    // if it doesn't, increase wrong guess counter && display wrong guess in wrongGuess array
-    //check if wrongGuess.length === maxGuesses
-    //if wrongGuess.length === maxGuesses then increase lose counter && display loser message && reset game
 
     // Display variables
     userGuessText.textContent = dash.join(" ");
